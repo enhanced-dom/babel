@@ -1,0 +1,52 @@
+{
+    "name": "@enhanced-dom/babel",
+    "version": "0.0.3",
+    "description": "Helpers for babel configuration",
+    "repository": "https://github.com/enhanced-dom/babel.git",
+    "main": "config.js",
+    "scripts": {
+        "package": "cd dist && npm pack",
+        "prebuild": "rimraf dist/*",
+        "build": "tsc -p ./tsconfig.json",
+        "postbuild": "copyfiles package.json LICENSE.md README.md dist",
+        "lint": "eslint src/** --fix --config eslint.config.js"
+    
+    },
+    "keywords": [],
+    "author": "CD9B4A105290E17E0948E021DF4105107C88693C59C0B891CCC08366C51AEA990902A6A156AC87D88A2FC41422A5E1C3C4071F251F19441C4516000EC25F87DF",
+    "license": "MIT",
+    "dependencies": {
+        "@babel/core": "^7.13.8",
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
+        "@babel/plugin-proposal-export-default-from": "^7.12.13",
+        "@babel/plugin-proposal-export-namespace-from": "^7.12.13",
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
+        "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+        "@babel/plugin-proposal-optional-chaining": "^7.13.8",
+        "@babel/plugin-syntax-import-meta": "^7.10.4",
+        "@babel/plugin-transform-async-to-generator": "^7.13.0",
+        "@babel/plugin-transform-destructuring": "^7.13.0",
+        "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+        "@babel/plugin-transform-regenerator": "^7.12.13",
+        "@babel/plugin-transform-runtime": "^7.13.9",
+        "@babel/plugin-transform-spread": "^7.13.0",
+        "@babel/preset-env": "^7.13.9",
+        "@babel/preset-react": "^7.12.13",
+        "@babel/preset-typescript": "^7.13.0",
+        "@babel/runtime": "^7.13.9"
+    },
+    "devDependencies": {
+        "@enhanced-dom/lint": "^0.0.3",
+        "copyfiles": "^2.4.1",
+        "rimraf": "^3.0.2",
+        "typescript": "^4.2.2",
+        "@babel/types": "^7.13.0",
+        "@types/babel__traverse": "^7.11.0",
+        "@types/babel__preset-env": "^7.9.1",
+        "@types/babel__core": "^7.1.12"
+    },
+    "engines": {
+        "node": ">=14.17.0",
+        "npm": ">=8.0.0"
+    }
+}
