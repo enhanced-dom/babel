@@ -57,10 +57,12 @@ export const configFactory = ({
   profile = EnvProfiles.BROWSERS,
   presets = [],
   plugins = [],
-}: { profile?: EnvProfiles | PresetEnvOptions; presets?: TransformOptions['presets']; plugins?: TransformOptions['plugins'] } = {}) => {
+  cache
+}: { profile?: EnvProfiles | PresetEnvOptions; presets?: TransformOptions['presets']; plugins?: TransformOptions['plugins']; cache?: boolean } = {}) => {
   const envProfile = typeof profile === 'string' ? profiles[profile] : profile
   const config = {
     babelrc: false,
+    cacheDirectory: cache,
     presets: [['@babel/preset-env', envProfile], '@babel/preset-react', '@babel/preset-typescript'],
     plugins: [
       '@babel/plugin-proposal-export-default-from',
