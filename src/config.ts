@@ -9,21 +9,39 @@ const defaultBrowserOptions = {
   corejs: 3,
   loose: true,
   modules: false,
+  include: ['@babel/plugin-transform-regenerator', '@babel/plugin-transform-async-to-generator'],
 }
 
 const browsersWithEdge = {
   ...defaultBrowserOptions,
-  include: ['@babel/plugin-proposal-object-rest-spread', '@babel/plugin-transform-destructuring', '@babel/plugin-transform-spread'],
+  include: [
+    ...defaultBrowserOptions.include,
+    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-transform-destructuring',
+    '@babel/plugin-transform-spread',
+  ],
+}
+
+const node = {
+  targets: {
+    node: 'current',
+  },
+  useBuiltIns: 'entry',
+  corejs: 3,
+  loose: true,
+  modules: false,
 }
 
 enum EnvProfiles {
   BROWSERS = 'browsers',
   BROWSERS_WITH_EDGE = 'browsersWithEdge',
+  NODE = 'node',
 }
 
 const profiles = {
   [EnvProfiles.BROWSERS]: defaultBrowserOptions,
   [EnvProfiles.BROWSERS_WITH_EDGE]: browsersWithEdge,
+  [EnvProfiles.NODE]: node,
 } as Record<EnvProfiles, PresetEnvOptions>
 
 const getPluginName = (plugin: PluginItem) =>
@@ -57,8 +75,13 @@ export const configFactory = ({
   profile = EnvProfiles.BROWSERS,
   presets = [],
   plugins = [],
-  cache
-}: { profile?: EnvProfiles | PresetEnvOptions; presets?: TransformOptions['presets']; plugins?: TransformOptions['plugins']; cache?: boolean } = {}) => {
+  cache,
+}: {
+  profile?: EnvProfiles | PresetEnvOptions
+  presets?: TransformOptions['presets']
+  plugins?: TransformOptions['plugins']
+  cache?: boolean
+} = {}) => {
   const envProfile = typeof profile === 'string' ? profiles[profile] : profile
   const config = {
     babelrc: false,
@@ -74,8 +97,6 @@ export const configFactory = ({
           loose: true,
         },
       ],
-      '@babel/plugin-transform-regenerator',
-      '@babel/plugin-transform-async-to-generator',
       '@babel/plugin-proposal-optional-chaining',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       '@enhanced-dom/babel/plugins/fontawesome',
