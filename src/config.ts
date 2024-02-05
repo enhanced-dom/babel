@@ -89,17 +89,9 @@ export const configFactory = ({
     presets: [['@babel/preset-env', envProfile], '@babel/preset-react', '@babel/preset-typescript'],
     plugins: [
       '@babel/plugin-proposal-export-default-from',
-      '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-syntax-import-meta',
-      [
-        '@babel/plugin-proposal-class-properties',
-        {
-          loose: true,
-        },
-      ],
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-nullish-coalescing-operator',
       '@enhanced-dom/babel/plugins/fontawesome',
+      'react-require',
     ],
   } as TransformOptions
 
@@ -110,8 +102,8 @@ export const configFactory = ({
     config.plugins = addMissing(plugins, config.plugins)
     config.plugins = ensureOrder(
       config.plugins,
-      '@babel/plugin-proposal-decorators',
-      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-transform-decorators',
+      '@babel/plugin-transform-class-properties',
       '@babel/plugin-transform-regenerator',
       '@babel/plugin-transform-async-to-generator',
     )

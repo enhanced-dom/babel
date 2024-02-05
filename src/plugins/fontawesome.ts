@@ -15,6 +15,7 @@ const replaceImport = (specifier: BabelTypes.ImportSpecifier, types: typeof Babe
 export = ({ types }: { types: typeof BabelTypes }): { visitor: Visitor } => {
   return {
     visitor: {
+      //eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(path) {
         const { node } = path
         if (isFontawesomeIconImport(node)) {
