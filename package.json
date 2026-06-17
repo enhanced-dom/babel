@@ -1,6 +1,6 @@
 {
   "name": "@enhanced-dom/babel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Helpers for babel configuration",
   "repository": "https://github.com/enhanced-dom/babel.git",
   "main": "config.js",
@@ -11,7 +11,7 @@
     "build": "tsc -p ./tsconfig.json",
     "postbuild": "copyfiles LICENSE.md README.md dist && @enhanced-dom-copy-packagejson",
     "publish": "npm run build",
-    "lint": "eslint src/** --fix --config eslint.config.js"
+    "lint": "eslint src/** --fix --config eslint.config.cjs"
   },
   "keywords": [],
   "author": "CD9B4A105290E17E0948E021DF4105107C88693C59C0B891CCC08366C51AEA990902A6A156AC87D88A2FC41422A5E1C3C4071F251F19441C4516000EC25F87DF",
